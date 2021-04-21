@@ -18,9 +18,9 @@
 //! defined at https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki
 //! except we define PSBTs containing non-standard SigHash types as invalid.
 
-use blockdata::script::Script;
-use blockdata::transaction::Transaction;
-use consensus::{encode, Encodable, Decodable};
+use crate::blockdata::script::Script;
+use crate::blockdata::transaction::Transaction;
+use crate::consensus::{encode, Encodable, Decodable};
 
 use std::io;
 
@@ -209,25 +209,25 @@ impl Decodable for PartiallySignedTransaction {
 
 #[cfg(test)]
 mod tests {
-    use hashes::hex::FromHex;
-    use hashes::{sha256, hash160, Hash, ripemd160};
-    use hash_types::Txid;
+    use crate::hashes::hex::FromHex;
+    use crate::hashes::{sha256, hash160, Hash, ripemd160};
+    use crate::hash_types::Txid;
 
     use std::collections::BTreeMap;
 
     use secp256k1::Secp256k1;
 
-    use blockdata::script::Script;
-    use blockdata::transaction::{Transaction, TxIn, TxOut, OutPoint};
-    use network::constants::Network::Bitcoin;
-    use consensus::encode::{deserialize, serialize, serialize_hex};
-    use util::bip32::{ChildNumber, ExtendedPrivKey, ExtendedPubKey, Fingerprint, KeySource};
-    use util::key::PublicKey;
-    use util::psbt::map::{Global, Output, Input};
-    use util::psbt::raw;
+    use crate::blockdata::script::Script;
+    use crate::blockdata::transaction::{Transaction, TxIn, TxOut, OutPoint};
+    use crate::network::constants::Network::Bitcoin;
+    use crate::consensus::encode::{deserialize, serialize, serialize_hex};
+    use crate::util::bip32::{ChildNumber, ExtendedPrivKey, ExtendedPubKey, Fingerprint, KeySource};
+    use crate::util::key::PublicKey;
+    use crate::util::psbt::map::{Global, Output, Input};
+    use crate::util::psbt::raw;
 
     use super::PartiallySignedTransaction;
-    use util::psbt::raw::ProprietaryKey;
+    use crate::util::psbt::raw::ProprietaryKey;
 
     #[test]
     fn trivial_psbt() {
@@ -466,15 +466,15 @@ mod tests {
         #[cfg(feature = "base64")]
         use std::str::FromStr;
 
-        use hashes::hex::FromHex;
-        use hash_types::Txid;
+        use crate::hashes::hex::FromHex;
+        use crate::hash_types::Txid;
 
-        use blockdata::script::Script;
-        use blockdata::transaction::{SigHashType, Transaction, TxIn, TxOut, OutPoint};
-        use consensus::encode::serialize_hex;
-        use util::psbt::map::{Map, Global, Input, Output};
-        use util::psbt::raw;
-        use util::psbt::{PartiallySignedTransaction, Error};
+        use crate::blockdata::script::Script;
+        use crate::blockdata::transaction::{SigHashType, Transaction, TxIn, TxOut, OutPoint};
+        use crate::consensus::encode::serialize_hex;
+        use crate::util::psbt::map::{Map, Global, Input, Output};
+        use crate::util::psbt::raw;
+        use crate::util::psbt::{PartiallySignedTransaction, Error};
 
         #[test]
         #[should_panic(expected = "InvalidMagic")]

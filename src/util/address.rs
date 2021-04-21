@@ -41,12 +41,12 @@ use std::str::FromStr;
 use std::error;
 
 use bech32;
-use hashes::Hash;
-use hash_types::{PubkeyHash, WPubkeyHash, ScriptHash, WScriptHash};
-use blockdata::script;
-use network::constants::Network;
-use util::base58;
-use util::key;
+use crate::hashes::Hash;
+use crate::hash_types::{PubkeyHash, WPubkeyHash, ScriptHash, WScriptHash};
+use crate::blockdata::script;
+use crate::network::constants::Network;
+use crate::util::base58;
+use crate::util::key;
 
 /// Address error.
 #[derive(Debug, PartialEq)]
@@ -496,11 +496,11 @@ mod tests {
     use std::str::FromStr;
     use std::string::ToString;
 
-    use hashes::hex::{FromHex, ToHex};
+    use crate::hashes::hex::{FromHex, ToHex};
 
-    use blockdata::script::Script;
-    use network::constants::Network::{Bitcoin, Testnet};
-    use util::key::PublicKey;
+    use crate::blockdata::script::Script;
+    use crate::network::constants::Network::{Bitcoin, Testnet};
+    use crate::util::key::PublicKey;
 
     use super::*;
 

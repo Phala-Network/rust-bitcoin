@@ -16,9 +16,9 @@
 
 use std::{error, fmt, str, slice, iter};
 
-use hashes::{sha256d, Hash};
+use crate::hashes::{sha256d, Hash};
 
-use util::endian;
+use crate::util::endian;
 
 /// An error that might occur during base58 decoding
 #[derive(Debug, PartialEq, Eq, Clone)]
@@ -241,7 +241,7 @@ pub fn check_encode_slice_to_fmt(fmt: &mut fmt::Formatter, data: &[u8]) -> fmt::
 #[cfg(test)]
 mod tests {
     use super::*;
-    use hashes::hex::FromHex;
+    use crate::hashes::hex::FromHex;
 
     #[test]
     fn test_base58_encode() {

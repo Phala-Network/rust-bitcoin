@@ -16,10 +16,10 @@
 //!
 //! Various utility functions
 
-use hashes::{sha256d, Hash, HashEngine};
+use crate::hashes::{sha256d, Hash, HashEngine};
 
-use blockdata::opcodes;
-use consensus::{encode, Encodable};
+use crate::blockdata::opcodes;
+use crate::consensus::{encode, Encodable};
 
 #[cfg(feature = "secp-recovery")]
 pub use self::message_signing::{MessageSignature, MessageSignatureError};
@@ -31,12 +31,12 @@ pub const BITCOIN_SIGNED_MSG_PREFIX: &[u8] = b"\x18Bitcoin Signed Message:\n";
 mod message_signing {
     use std::{error, fmt};
 
-    use hashes::sha256d;
+    use crate::hashes::sha256d;
     use secp256k1;
     use secp256k1::recovery::{RecoveryId, RecoverableSignature};
 
-    use util::key::PublicKey;
-    use util::address::{Address, AddressType};
+    use crate::util::key::PublicKey;
+    use crate::util::address::{Address, AddressType};
 
     /// An error used for dealing with Bitcoin Signed Messages.
     #[derive(Debug, PartialEq, Eq)]
@@ -243,7 +243,7 @@ pub fn signed_msg_hash(msg: &str) -> sha256d::Hash {
 
 #[cfg(test)]
 mod tests {
-    use hashes::hex::ToHex;
+    use crate::hashes::hex::ToHex;
     use super::script_find_and_remove;
     use super::signed_msg_hash;
 

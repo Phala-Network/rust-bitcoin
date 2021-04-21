@@ -21,13 +21,13 @@ use std::{error, fmt};
 use std::str::FromStr;
 #[cfg(feature = "serde")] use serde;
 
-use hash_types::XpubIdentifier;
-use hashes::{sha512, Hash, HashEngine, Hmac, HmacEngine};
+use crate::hash_types::XpubIdentifier;
+use crate::hashes::{sha512, Hash, HashEngine, Hmac, HmacEngine};
 use secp256k1::{self, Secp256k1};
 
-use network::constants::Network;
-use util::{base58, endian};
-use util::key::{self, PublicKey, PrivateKey};
+use crate::network::constants::Network;
+use crate::util::{base58, endian};
+use crate::util::key::{self, PublicKey, PrivateKey};
 
 /// A chain code
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -794,9 +794,9 @@ mod tests {
     use std::string::ToString;
 
     use secp256k1::{self, Secp256k1};
-    use hashes::hex::FromHex;
+    use crate::hashes::hex::FromHex;
 
-    use network::constants::Network::{self, Bitcoin};
+    use crate::network::constants::Network::{self, Bitcoin};
 
     #[test]
     fn test_parse_derivation_path() {

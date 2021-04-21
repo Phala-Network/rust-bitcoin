@@ -21,10 +21,10 @@ use std::{io, ops, error};
 use std::str::FromStr;
 
 use secp256k1::{self, Secp256k1};
-use network::constants::Network;
-use hashes::{Hash, hash160};
-use hash_types::{PubkeyHash, WPubkeyHash};
-use util::base58;
+use crate::network::constants::Network;
+use crate::hashes::{Hash, hash160};
+use crate::hash_types::{PubkeyHash, WPubkeyHash};
+use crate::util::base58;
 
 /// A key-related error.
 #[derive(Debug, PartialEq, Eq, Clone)]
@@ -398,10 +398,10 @@ mod tests {
     use secp256k1::Secp256k1;
     use std::io;
     use std::str::FromStr;
-    use hashes::hex::ToHex;
-    use network::constants::Network::Testnet;
-    use network::constants::Network::Bitcoin;
-    use util::address::Address;
+    use crate::hashes::hex::ToHex;
+    use crate::network::constants::Network::Testnet;
+    use crate::network::constants::Network::Bitcoin;
+    use crate::util::address::Address;
 
     #[test]
     fn test_key_derivation() {

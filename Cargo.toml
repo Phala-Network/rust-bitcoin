@@ -2,6 +2,7 @@
 name = "bitcoin"
 version = "0.26.0"
 authors = ["Andrew Poelstra <apoelstra@wpsoftware.net>"]
+edition = "2018"
 license = "CC0-1.0"
 homepage = "https://github.com/rust-bitcoin/rust-bitcoin/"
 repository = "https://github.com/rust-bitcoin/rust-bitcoin/"

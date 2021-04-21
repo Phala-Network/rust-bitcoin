@@ -19,9 +19,9 @@
 
 use std::{fmt, io};
 
-use consensus::encode::{self, ReadExt, WriteExt, Decodable, Encodable, VarInt, serialize, deserialize, MAX_VEC_SIZE};
-use hashes::hex;
-use util::psbt::Error;
+use crate::consensus::encode::{self, ReadExt, WriteExt, Decodable, Encodable, VarInt, serialize, deserialize, MAX_VEC_SIZE};
+use crate::hashes::hex;
+use crate::util::psbt::Error;
 
 /// A PSBT key in its raw byte form.
 #[derive(Debug, PartialEq, Hash, Eq, Clone, Ord, PartialOrd)]

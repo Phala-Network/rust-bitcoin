@@ -29,15 +29,15 @@ use std::{error, fmt, io, str};
 
 #[cfg(feature = "serde")] use serde;
 
-use hash_types::{PubkeyHash, WPubkeyHash, ScriptHash, WScriptHash};
-use blockdata::opcodes;
-use consensus::{encode, Decodable, Encodable};
-use hashes::{Hash, hex};
+use crate::hash_types::{PubkeyHash, WPubkeyHash, ScriptHash, WScriptHash};
+use crate::blockdata::opcodes;
+use crate::consensus::{encode, Decodable, Encodable};
+use crate::hashes::{Hash, hex};
 #[cfg(feature="bitcoinconsensus")] use bitcoinconsensus;
 #[cfg(feature="bitcoinconsensus")] use std::convert;
 #[cfg(feature="bitcoinconsensus")] use OutPoint;
 
-use util::key::PublicKey;
+use crate::util::key::PublicKey;
 
 #[derive(Clone, Default, PartialOrd, Ord, PartialEq, Eq, Hash)]
 /// A Bitcoin script
@@ -886,11 +886,11 @@ mod test {
     use super::*;
     use super::build_scriptint;
 
-    use hashes::hex::{FromHex, ToHex};
-    use consensus::encode::{deserialize, serialize};
-    use blockdata::opcodes;
-    use util::key::PublicKey;
-    use util::psbt::serialize::Serialize;
+    use crate::hashes::hex::{FromHex, ToHex};
+    use crate::consensus::encode::{deserialize, serialize};
+    use crate::blockdata::opcodes;
+    use crate::util::key::PublicKey;
+    use crate::util::psbt::serialize::Serialize;
 
     #[test]
     fn script() {

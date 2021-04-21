@@ -17,14 +17,14 @@ use std::collections::btree_map::Entry;
 use std::io::{self, Cursor, Read};
 use std::cmp;
 
-use blockdata::transaction::Transaction;
-use consensus::{encode, Encodable, Decodable};
-use util::psbt::map::Map;
-use util::psbt::raw;
-use util::psbt;
-use util::psbt::Error;
-use util::endian::u32_to_array_le;
-use util::bip32::{ExtendedPubKey, KeySource, Fingerprint, DerivationPath, ChildNumber};
+use crate::blockdata::transaction::Transaction;
+use crate::consensus::{encode, Encodable, Decodable};
+use crate::util::psbt::map::Map;
+use crate::util::psbt::raw;
+use crate::util::psbt;
+use crate::util::psbt::Error;
+use crate::util::endian::u32_to_array_le;
+use crate::util::bip32::{ExtendedPubKey, KeySource, Fingerprint, DerivationPath, ChildNumber};
 
 /// Type: Unsigned Transaction PSBT_GLOBAL_UNSIGNED_TX = 0x00
 const PSBT_GLOBAL_UNSIGNED_TX: u8 = 0x00;
@@ -329,7 +329,7 @@ impl Decodable for Global {
                         }
                     }
                 }
-                Err(::consensus::encode::Error::Psbt(::util::psbt::Error::NoMorePairs)) => break,
+                Err(crate::consensus::encode::Error::Psbt(crate::util::psbt::Error::NoMorePairs)) => break,
                 Err(e) => return Err(e),
             }
         }

@@ -15,11 +15,11 @@
 use std::error;
 use std::fmt;
 
-use blockdata::transaction::Transaction;
-use consensus::encode;
-use util::psbt::raw;
+use crate::blockdata::transaction::Transaction;
+use crate::consensus::encode;
+use crate::util::psbt::raw;
 
-use hashes;
+use crate::hashes;
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
 /// Enum for marking psbt hash error
