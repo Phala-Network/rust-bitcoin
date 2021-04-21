@@ -22,6 +22,7 @@
 use std::{fmt, io, iter, mem, str};
 use std::borrow::Cow;
 use std::io::Cursor;
+use std::vec::Vec;
 
 use crate::blockdata::block;
 use crate::blockdata::transaction;

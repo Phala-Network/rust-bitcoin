@@ -15,6 +15,8 @@
 //! Base58 encoder and decoder
 
 use std::{error, fmt, str, slice, iter};
+use std::string::String;
+use std::vec::Vec;
 
 use crate::hashes::{sha256d, Hash};
 
@@ -301,4 +303,3 @@ mod tests {
 
     }
 }
-

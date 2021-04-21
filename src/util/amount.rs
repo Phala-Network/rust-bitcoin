@@ -20,6 +20,8 @@ use std::fmt::{self, Write};
 use std::ops;
 use std::str::FromStr;
 use std::cmp::Ordering;
+use std::string::{String, ToString};
+use std::borrow::ToOwned;
 
 /// A set of denominations in which amounts can be expressed.
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]

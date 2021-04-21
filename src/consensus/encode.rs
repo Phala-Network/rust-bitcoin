@@ -32,6 +32,9 @@
 use std::{fmt, error, io, mem, u32};
 use std::borrow::Cow;
 use std::io::{Cursor, Read, Write};
+use std::boxed::Box;
+use std::string::String;
+use std::vec::Vec;
 use crate::hashes::hex::ToHex;
 
 use crate::hashes::{sha256d, Hash};
@@ -1036,4 +1039,3 @@ mod tests {
         }
     }
 }
-

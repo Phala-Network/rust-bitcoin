@@ -20,6 +20,7 @@
 
 use std::io;
 use std::borrow::Cow;
+use std::string::String;
 
 use crate::network::address::Address;
 use crate::network::constants::{self, ServiceFlags};

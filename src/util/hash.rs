@@ -17,6 +17,7 @@
 
 use std::cmp::min;
 use std::io;
+use std::vec::Vec;
 
 use crate::hashes::Hash;
 use crate::consensus::encode::Encodable;

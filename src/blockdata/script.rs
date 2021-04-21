@@ -26,6 +26,9 @@
 
 use std::default::Default;
 use std::{error, fmt, io, str};
+use std::boxed::Box;
+use std::string::String;
+use std::vec::Vec;
 
 #[cfg(feature = "serde")] use serde;
 
@@ -1246,4 +1249,3 @@ mod test {
 		spent.verify(0, 18393430, spending.as_slice()).unwrap();
 	}
 }
-

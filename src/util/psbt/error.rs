@@ -14,6 +14,8 @@
 
 use std::error;
 use std::fmt;
+use std::string::String;
+use std::vec::Vec;
 
 use crate::blockdata::transaction::Transaction;
 use crate::consensus::encode;

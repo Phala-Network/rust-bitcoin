@@ -20,6 +20,7 @@
 
 use std::{fmt, io, iter};
 use std::net::{SocketAddr, Ipv6Addr, SocketAddrV4, SocketAddrV6, Ipv4Addr, ToSocketAddrs};
+use std::vec::Vec;
 
 use crate::network::constants::ServiceFlags;
 use crate::consensus::encode::{self, Decodable, Encodable, VarInt, ReadExt, WriteExt};
@@ -101,9 +102,9 @@ impl fmt::Debug for Address {
         let ipv6 = Ipv6Addr::from(self.address);
 
         match ipv6.to_ipv4() {
-            Some(addr) => write!(f, "Address {{services: {}, address: {}, port: {}}}", 
+            Some(addr) => write!(f, "Address {{services: {}, address: {}, port: {}}}",
                 self.services, addr, self.port),
-            None => write!(f, "Address {{services: {}, address: {}, port: {}}}", 
+            None => write!(f, "Address {{services: {}, address: {}, port: {}}}",
                 self.services, ipv6, self.port)
         }
     }
@@ -138,7 +139,7 @@ pub enum AddrV2 {
 impl Encodable for AddrV2 {
     fn consensus_encode<W: io::Write>(&self, e: W) -> Result<usize, io::Error> {
         fn encode_addr<W: io::Write>(mut e: W, network: u8, bytes: &[u8]) -> Result<usize, io::Error> {
-                let len = 
+                let len =
                     network.consensus_encode(&mut e)? +
                     VarInt(bytes.len() as u64).consensus_encode(&mut e)? +
                     bytes.len();
@@ -171,7 +172,7 @@ impl Decodable for AddrV2 {
                 }
                 let addr: [u8; 4] = Decodable::consensus_decode(&mut d)?;
                 AddrV2::Ipv4(Ipv4Addr::new(addr[0], addr[1], addr[2], addr[3]))
-            }, 
+            },
             2 => {
                 if len != 16 {
                     return Err(encode::Error::ParseFailed("Invalid IPv6 address"));
@@ -187,7 +188,7 @@ impl Decodable for AddrV2 {
                     addr[0],addr[1],addr[2],addr[3],
                     addr[4],addr[5],addr[6],addr[7]
                 ))
-            }, 
+            },
             3 => {
                 if len != 10 {
                     return Err(encode::Error::ParseFailed("Invalid TorV2 address"));
@@ -208,7 +209,7 @@ impl Decodable for AddrV2 {
                 }
                 let hash = Decodable::consensus_decode(&mut d)?;
                 AddrV2::I2p(hash)
-            }, 
+            },
             6 => {
                 if len != 16  {
                     return Err(encode::Error::ParseFailed("Invalid CJDNS address"));
@@ -229,7 +230,7 @@ impl Decodable for AddrV2 {
                 let mut addr = vec![0u8; len as usize];
                 d.read_slice(&mut addr)?;
                 AddrV2::Unknown(network_id, addr)
-            } 
+            }
         })
     }
 }
@@ -268,7 +269,7 @@ impl Encodable for AddrV2Message {
         len += self.addr.consensus_encode(&mut e)?;
         len += self.port.to_be().consensus_encode(e)?;
         Ok(len)
-    }   
+    }
 }
 
 impl Decodable for AddrV2Message {
@@ -318,7 +319,7 @@ mod test {
                 services: flags.add(ServiceFlags::WITNESS),
                 address: [0, 0, 0, 0, 0, 0xffff, 0x0a00, 0x0001],
                 port: 8333
-            }), 
+            }),
             "The address is: Address {services: ServiceFlags(NETWORK|WITNESS), address: 10.0.0.1, port: 8333}"
         );
 
@@ -327,7 +328,7 @@ mod test {
                 services: ServiceFlags::NETWORK_LIMITED,
                 address: [0xFD87, 0xD87E, 0xEB43, 0, 0, 0xffff, 0x0a00, 0x0001],
                 port: 8333
-            }), 
+            }),
             "The address is: Address {services: ServiceFlags(NETWORK_LIMITED), address: fd87:d87e:eb43::ffff:a00:1, port: 8333}"
         );
     }

@@ -14,6 +14,7 @@
 
 use std::io;
 use std::collections::btree_map::{BTreeMap, Entry};
+use std::vec::Vec;
 
 use crate::blockdata::script::Script;
 use crate::blockdata::transaction::{SigHashType, Transaction, TxOut};

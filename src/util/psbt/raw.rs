@@ -18,6 +18,7 @@
 //! https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki.
 
 use std::{fmt, io};
+use std::vec::Vec;
 
 use crate::consensus::encode::{self, ReadExt, WriteExt, Decodable, Encodable, VarInt, serialize, deserialize, MAX_VEC_SIZE};
 use crate::hashes::hex;

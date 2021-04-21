@@ -21,6 +21,7 @@
 //!
 
 use std::fmt;
+use std::vec::Vec;
 
 use crate::util;
 use crate::util::Error::{BlockBadTarget, BlockBadProofOfWork};

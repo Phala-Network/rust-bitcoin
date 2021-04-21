@@ -20,6 +20,7 @@
 //!
 
 use std::default::Default;
+use std::vec::Vec;
 
 use crate::hashes::hex::FromHex;
 use crate::hashes::sha256d;
@@ -232,4 +233,3 @@ mod test {
                    "00000008819873e925422c1ff0f99f7cc9bbb232af63a077a480a3633bee1ef6".to_string());
     }
 }
-

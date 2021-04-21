@@ -19,6 +19,7 @@
 //!
 
 use std::io;
+use std::vec::Vec;
 
 use crate::hashes::sha256d;
 
@@ -188,4 +189,3 @@ mod tests {
         assert_eq!(serialize(&real_decode), from_sat);
     }
 }
-

@@ -27,6 +27,7 @@ use crate::hashes::{sha256, Hash, HashEngine, Hmac, HmacEngine};
 use crate::blockdata::{opcodes, script};
 
 use std::{error, fmt};
+use std::vec::Vec;
 
 use crate::hash_types::ScriptHash;
 use crate::network::constants::Network;
@@ -401,5 +402,3 @@ mod tests {
         assert!(template.to_script(alpha_keys).is_ok());
     }
 }
-
-

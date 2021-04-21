@@ -13,6 +13,7 @@
 //
 
 use std::io;
+use std::vec::Vec;
 
 use crate::consensus::encode;
 use crate::util::psbt;

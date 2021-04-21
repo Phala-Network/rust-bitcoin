@@ -25,6 +25,8 @@
 
 use std::default::Default;
 use std::{error, fmt, io, str};
+use std::string::{String, ToString};
+use std::vec::Vec;
 
 use crate::hashes::{self, Hash, sha256d};
 use crate::hashes::hex::FromHex;

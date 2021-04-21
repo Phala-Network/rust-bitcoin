@@ -18,6 +18,7 @@
 //! bytes in PSBT key-value pairs.
 
 use std::io;
+use std::vec::Vec;
 
 use crate::blockdata::script::Script;
 use crate::blockdata::transaction::{SigHashType, Transaction, TxOut};

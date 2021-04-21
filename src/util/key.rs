@@ -19,6 +19,8 @@
 use std::fmt::{self, Write};
 use std::{io, ops, error};
 use std::str::FromStr;
+use std::string::String;
+use std::vec::Vec;
 
 use secp256k1::{self, Secp256k1};
 use crate::network::constants::Network;

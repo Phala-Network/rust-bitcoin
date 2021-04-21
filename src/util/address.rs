@@ -39,6 +39,8 @@
 use std::fmt::{self, Display, Formatter};
 use std::str::FromStr;
 use std::error;
+use std::string::ToString;
+use std::vec::Vec;
 
 use bech32;
 use crate::hashes::Hash;

@@ -16,6 +16,8 @@ use std::collections::BTreeMap;
 use std::collections::btree_map::Entry;
 use std::io::{self, Cursor, Read};
 use std::cmp;
+use std::borrow::ToOwned;
+use std::vec::Vec;
 
 use crate::blockdata::transaction::Transaction;
 use crate::consensus::{encode, Encodable, Decodable};

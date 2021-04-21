@@ -22,6 +22,7 @@
 
 use std::fmt;
 use std::io::{self, Read};
+use std::vec::Vec;
 
 use crate::consensus::{encode, Decodable};
 

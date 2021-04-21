@@ -27,6 +27,7 @@ use crate::consensus::{encode, Encodable};
 
 use std::io;
 use std::ops::{Deref, DerefMut};
+use std::vec::Vec;
 
 /// Parts of a sighash which are common across inputs or signatures, and which are
 /// sufficient (in conjunction with a private key) to sign the transaction

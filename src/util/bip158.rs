@@ -50,6 +50,7 @@ use std::error;
 use std::fmt::{Display, Formatter};
 use std::io::Cursor;
 use std::cmp::Ordering;
+use std::vec::Vec;
 
 
 use crate::hashes::{Hash, siphash24};

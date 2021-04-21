@@ -19,6 +19,8 @@
 use std::default::Default;
 use std::{error, fmt};
 use std::str::FromStr;
+use std::string::String;
+use std::vec::Vec;
 #[cfg(feature = "serde")] use serde;
 
 use crate::hash_types::XpubIdentifier;
@@ -1098,4 +1100,3 @@ mod tests {
         assert_eq!("000042", &format!("{:06}", ChildNumber::from_normal_idx(42).unwrap()));
     }
 }
-

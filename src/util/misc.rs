@@ -16,6 +16,8 @@
 //!
 //! Various utility functions
 
+use std::vec::Vec;
+
 use crate::hashes::{sha256d, Hash, HashEngine};
 
 use crate::blockdata::opcodes;
@@ -324,4 +326,3 @@ mod tests {
         assert_eq!(signature2.is_signed_by_address(&secp, &p2shwpkh, msg_hash), Ok(false));
     }
 }
-

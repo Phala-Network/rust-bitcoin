@@ -23,6 +23,7 @@ use crate::blockdata::transaction::Transaction;
 use crate::consensus::{encode, Encodable, Decodable};
 
 use std::io;
+use std::vec::Vec;
 
 mod error;
 pub use self::error::Error;

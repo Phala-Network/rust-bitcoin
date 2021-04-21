@@ -54,6 +54,9 @@
 
 use std::collections::HashSet;
 use std::io;
+use std::borrow::ToOwned;
+use std::string::String;
+use std::vec::Vec;
 
 use crate::hashes::Hash;
 use crate::hash_types::{Txid, TxMerkleNode};

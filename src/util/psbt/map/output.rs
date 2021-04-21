@@ -15,6 +15,7 @@
 use std::io;
 use std::collections::BTreeMap;
 use std::collections::btree_map::Entry;
+use std::vec::Vec;
 
 use crate::blockdata::script::Script;
 use crate::consensus::encode;
