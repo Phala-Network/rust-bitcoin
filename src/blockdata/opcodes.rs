@@ -23,6 +23,7 @@
 #[cfg(feature = "serde")] use serde;
 
 use std::fmt;
+use std::string::ToString;
 
 // Note: I am deliberately not implementing PartialOrd or Ord on the
 //       opcode enum. If you want to check ranges of opcodes, etc.,
@@ -1094,4 +1095,3 @@ mod tests {
         assert_eq!(unique.len(), 256);
     }
 }
-

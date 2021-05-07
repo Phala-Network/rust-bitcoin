@@ -196,7 +196,7 @@ macro_rules! serde_string_impl {
                         self.visit_str(v)
                     }
 
-                    fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
+                    fn visit_string<E>(self, v: std::string::String) -> Result<Self::Value, E>
                     where
                         E: $crate::serde::de::Error,
                     {
@@ -256,7 +256,7 @@ macro_rules! serde_struct_human_string_impl {
                             self.visit_str(v)
                         }
 
-                        fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
+                        fn visit_string<E>(self, v: std::string::String) -> Result<Self::Value, E>
                         where
                             E: $crate::serde::de::Error,
                         {
@@ -606,7 +606,7 @@ macro_rules! user_enum {
                         self.visit_str(v)
                     }
 
-                    fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
+                    fn visit_string<E>(self, v: std::string::String) -> Result<Self::Value, E>
                     where
                         E: $crate::serde::de::Error,
                     {

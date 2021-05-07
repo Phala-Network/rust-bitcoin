@@ -465,7 +465,7 @@ macro_rules! construct_uint {
                     where
                         E: de::Error,
                     {
-                        let bytes = Vec::from_hex(s)
+                        let bytes = std::vec::Vec::from_hex(s)
                             .map_err(|_| de::Error::invalid_value(de::Unexpected::Str(s), &self))?;
                         $name::from_be_slice(&bytes)
                             .map_err(|_| de::Error::invalid_length(bytes.len() * 2, &self))

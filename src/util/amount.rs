@@ -873,7 +873,7 @@ pub mod serde {
     //! ```
 
     use serde::{Deserialize, Deserializer, Serialize, Serializer};
-    use util::amount::{Amount, Denomination, SignedAmount};
+    use crate::util::amount::{Amount, Denomination, SignedAmount};
 
     /// This trait is used only to avoid code duplication and naming collisions
     /// of the different serde serialization crates.
@@ -962,7 +962,7 @@ pub mod serde {
         //! Use with `#[serde(with = "amount::serde::as_sat")]`.
 
         use serde::{Deserializer, Serializer};
-        use util::amount::serde::SerdeAmount;
+        use crate::util::amount::serde::SerdeAmount;
 
         pub fn serialize<A: SerdeAmount, S: Serializer>(a: &A, s: S) -> Result<S::Ok, S::Error> {
             a.ser_sat(s)
@@ -977,7 +977,7 @@ pub mod serde {
             //! Use with `#[serde(default, with = "amount::serde::as_sat::opt")]`.
 
             use serde::{Deserializer, Serializer, de};
-            use util::amount::serde::SerdeAmountForOpt;
+            use crate::util::amount::serde::SerdeAmountForOpt;
             use std::fmt;
             use std::marker::PhantomData;
 
@@ -1025,7 +1025,7 @@ pub mod serde {
         //! Use with `#[serde(with = "amount::serde::as_btc")]`.
 
         use serde::{Deserializer, Serializer};
-        use util::amount::serde::SerdeAmount;
+        use crate::util::amount::serde::SerdeAmount;
 
         pub fn serialize<A: SerdeAmount, S: Serializer>(a: &A, s: S) -> Result<S::Ok, S::Error> {
             a.ser_btc(s)
@@ -1040,7 +1040,7 @@ pub mod serde {
             //! Use with `#[serde(default, with = "amount::serde::as_btc::opt")]`.
 
             use serde::{Deserializer, Serializer, de};
-            use util::amount::serde::SerdeAmountForOpt;
+            use crate::util::amount::serde::SerdeAmountForOpt;
             use std::fmt;
             use std::marker::PhantomData;
 

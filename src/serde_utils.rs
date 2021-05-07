@@ -11,7 +11,7 @@ pub mod btreemap_byte_values {
     use hashes::hex::{FromHex, ToHex};
     use serde;
 
-    pub fn serialize<S, T>(v: &BTreeMap<T, Vec<u8>>, s: S)
+    pub fn serialize<S, T>(v: &BTreeMap<T, std::vec::Vec<u8>>, s: S)
         -> Result<S::Ok, S::Error> where
         S: serde::Serializer,
         T: serde::Serialize + ::std::hash::Hash + Eq + Ord,
@@ -31,7 +31,7 @@ pub mod btreemap_byte_values {
     }
 
     pub fn deserialize<'de, D, T>(d: D)
-        -> Result<BTreeMap<T, Vec<u8>>, D::Error> where
+        -> Result<BTreeMap<T, std::vec::Vec<u8>>, D::Error> where
         D: serde::Deserializer<'de>,
         T: serde::Deserialize<'de> + ::std::hash::Hash + Eq + Ord,
     {
@@ -41,7 +41,7 @@ pub mod btreemap_byte_values {
         impl<'de, T> serde::de::Visitor<'de> for Visitor<T> where
             T: serde::Deserialize<'de> + ::std::hash::Hash + Eq + Ord,
         {
-            type Value = BTreeMap<T, Vec<u8>>;
+            type Value = BTreeMap<T, std::vec::Vec<u8>>;
 
             fn expecting(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
                 write!(f, "a map with hexadecimal values")
@@ -150,19 +150,19 @@ pub mod btreemap_as_seq_byte_values {
     #[derive(Debug, Deserialize)]
     struct OwnedPair<T>(
         T,
-        #[serde(deserialize_with = "::serde_utils::hex_bytes::deserialize")]
-        Vec<u8>,
+        #[serde(deserialize_with = "crate::serde_utils::hex_bytes::deserialize")]
+        std::vec::Vec<u8>,
     );
 
     /// A custom key-value pair type that serialized the bytes as hex.
     #[derive(Debug, Serialize)]
     struct BorrowedPair<'a, T: 'static>(
         &'a T,
-        #[serde(serialize_with = "::serde_utils::hex_bytes::serialize")]
+        #[serde(serialize_with = "crate::serde_utils::hex_bytes::serialize")]
         &'a [u8],
     );
 
-    pub fn serialize<S, T>(v: &BTreeMap<T, Vec<u8>>, s: S)
+    pub fn serialize<S, T>(v: &BTreeMap<T, std::vec::Vec<u8>>, s: S)
         -> Result<S::Ok, S::Error> where
         S: serde::Serializer,
         T: serde::Serialize + ::std::hash::Hash + Eq + Ord + 'static,
@@ -182,7 +182,7 @@ pub mod btreemap_as_seq_byte_values {
     }
 
     pub fn deserialize<'de, D, T>(d: D)
-        -> Result<BTreeMap<T, Vec<u8>>, D::Error> where
+        -> Result<BTreeMap<T, std::vec::Vec<u8>>, D::Error> where
         D: serde::Deserializer<'de>,
         T: serde::Deserialize<'de> + ::std::hash::Hash + Eq + Ord,
     {
@@ -192,7 +192,7 @@ pub mod btreemap_as_seq_byte_values {
         impl<'de, T> serde::de::Visitor<'de> for Visitor<T> where
             T: serde::Deserialize<'de> + ::std::hash::Hash + Eq + Ord,
         {
-            type Value = BTreeMap<T, Vec<u8>>;
+            type Value = BTreeMap<T, std::vec::Vec<u8>>;
 
             fn expecting(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
                 write!(f, "a sequence of pairs")
